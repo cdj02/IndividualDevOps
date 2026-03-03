@@ -9,9 +9,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-servers:
 - url: https://virtserver.swaggerhub.com/tutorial/1.0.0
-description: SwaggerHub API Auto Mocking
 paths:
   /student/{student_id}:
     get:
