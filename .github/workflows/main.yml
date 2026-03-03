@@ -21,7 +21,7 @@ jobs:
     - name: "Check files existence"
       uses: andstor/file-existence-action@v2
       with:
-        files: "/one/postman/collection.json,postman/environment.json"
+        files: "one/postman/collection.json,postman/environment.json"
         fail: true
 
     - name: Run API Tests
