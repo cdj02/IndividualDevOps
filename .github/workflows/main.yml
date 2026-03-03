@@ -4,6 +4,7 @@ env:
   IMAGE_NAME: student_service
   REPO_NAME:
 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build docker
       run: |
-        docker build ./one -t casperdejong02/$IMAGE_NAME
+        docker build . -t casperdejong02/$IMAGE_NAME
     - name: run docker
       run: |
         docker run -d -p 8080:8080 casperdejong02/$IMAGE_NAME:latest && \
@@ -20,7 +21,7 @@ jobs:
     - name: "Check files existence"
       uses: andstor/file-existence-action@v2
       with:
-        files: "one/postman/collection.json,one/postman/environment.json"
+        files: "one/postman/collection.json,postman/environment.json"
         fail: true
 
     - name: Run API Tests
