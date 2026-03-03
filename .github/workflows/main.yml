@@ -4,7 +4,6 @@ env:
   IMAGE_NAME: student_service
   REPO_NAME:
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +20,7 @@ jobs:
     - name: "Check files existence"
       uses: andstor/file-existence-action@v2
       with:
-        files: "one/postman/collection.json,postman/environment.json"
+        files: "one/postman/collection.json,one/postman/environment.json"
         fail: true
 
     - name: Run API Tests
