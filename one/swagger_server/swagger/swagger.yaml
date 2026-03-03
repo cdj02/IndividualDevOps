@@ -9,10 +9,9 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-- url: https://virtserver.swaggerhub.com/uva-f9d/tutorial/1.0.0
-  description: SwaggerHub API Auto Mocking
+servers:
 - url: https://virtserver.swaggerhub.com/tutorial/1.0.0
-  description: SwaggerHub API Auto Mocking
+description: SwaggerHub API Auto Mocking
 paths:
   /student/{student_id}:
     get:
