@@ -31,10 +31,6 @@ jobs:
         environment: one/postman/environment.json
         reporters: cli
         bail: true
-        
-    - name: Print Server Logs on Error
-      if: failure()
-      run: docker logs $(docker ps -aq | head -n 1)
 
     - name: Check if we failed
       id: fail-check
