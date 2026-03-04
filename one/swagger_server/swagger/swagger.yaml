@@ -18,8 +18,7 @@ paths:
         description: the uid
         required: true
         schema:
-          type: string
-          format: uuid
+          type: integer
       responses:
         "200":
           description: Successful operation
@@ -42,8 +41,7 @@ paths:
         description: the uid
         required: true
         schema:
-          type: string
-          format: uuid
+          type: integer
       responses:
         "200":
           description: Successful operation
@@ -69,13 +67,35 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                format: uuid
+                type: integer
         "400":
           description: "invalid input, object invalid"
         "409":
           description: Already exists
       x-openapi-router-controller: swagger_server.controllers.default_controller
+
+  /student/{student_id}/average_grade:
+    get:
+      summary: gets average grade
+      description: Returns the average grade of the student
+      operationId: get_student_by_id_average_grade
+      parameters:
+      - name: student_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: average grade returned
+          content:
+            application/json:
+              schema:
+                type: number
+        "404":
+          description: student or grades not found
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+
 components:
   schemas:
     Student:
@@ -111,3 +131,5 @@ components:
           type: string
         grade:
           type: number
+          minimum: 0
+          maximum: 10
