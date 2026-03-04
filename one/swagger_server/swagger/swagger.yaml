@@ -2,11 +2,6 @@ openapi: 3.0.0
 info:
   title: Simple Inventory API
   description: This is a simple API
-  contact:
-    email: you@your-company.com
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
 - url: https://virtserver.swaggerhub.com/tutorial/1.0.0
@@ -22,8 +17,6 @@ paths:
         in: path
         description: the uid
         required: true
-        style: simple
-        explode: false
         schema:
           type: string
           format: uuid
@@ -41,32 +34,23 @@ paths:
       x-openapi-router-controller: swagger_server.controllers.default_controller
     delete:
       summary: deletes a student
-      description: |
-        delete a single student
+      description: delete a single student
       operationId: delete_student
       parameters:
       - name: student_id
         in: path
         description: the uid
         required: true
-        style: simple
-        explode: false
         schema:
           type: string
           format: uuid
       responses:
         "200":
           description: Successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-                format: Student
-                x-content-type: application/json
         "400":
           description: Bad Request
         "404":
-          description: Student with specified student_id cannot be found
+          description: Not found
       x-openapi-router-controller: swagger_server.controllers.default_controller
   /student:
     post:
@@ -87,7 +71,6 @@ paths:
               schema:
                 type: string
                 format: uuid
-                x-content-type: application/json
         "400":
           description: "invalid input, object invalid"
         "409":
@@ -110,16 +93,14 @@ components:
         grade_records:
           type: array
           items:
-            maximum: 10
-            minimum: 0
-            type: integer
+            $ref: "#/components/schemas/GradeRecord"
       example:
         student_id: 0
-        last_name: last_name
+        last_name: "De Jong"
+        first_name: "Casper"
         grade_records:
-        - 6
-        - 6
-        first_name: first_name
+        - subject_name: "Math"
+          grade: 8.5
     GradeRecord:
       required:
       - grade
@@ -130,4 +111,3 @@ components:
           type: string
         grade:
           type: number
-
