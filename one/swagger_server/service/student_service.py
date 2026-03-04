@@ -34,6 +34,7 @@ def delete(student_id=None):
 
 def get_average_grade(student_id):
     student = student_db.find_one({"student_id": int(student_id)})
+    
     if not student or not student.get('grade_records'):
         return 'not found', 404
     
