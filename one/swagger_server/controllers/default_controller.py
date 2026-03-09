@@ -46,3 +46,6 @@ def get_student_by_id(student_id):  # noqa: E501
     :rtype: Student
     """
     return get_by_id(student_id)
+
+def get_student_by_id_average_grade(student_id):
+    return get_average_grade(student_id)
