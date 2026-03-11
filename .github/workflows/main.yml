@@ -9,13 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build docker
+    - name: Build and run with docker-compose
       run: |
-        docker build ./one -t casperdejong02/$IMAGE_NAME
-    - name: run docker
-      run: |
-        docker run -d -p 8080:8080 casperdejong02/$IMAGE_NAME:latest && \
-          docker ps && sleep 5
+        cd one
+        docker-compose up --build -d
+        docker ps
+        sleep 10
 
     - name: "Check files existence"
       uses: andstor/file-existence-action@v2
