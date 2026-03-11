@@ -12,7 +12,7 @@ jobs:
     - name: Build and run with docker-compose
       run: |
         cd one
-        docker-compose up --build -d
+        docker compose up --build -d
         docker ps
         sleep 10
 
